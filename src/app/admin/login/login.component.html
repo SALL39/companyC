@@ -1,0 +1,25 @@
+
+<div class="container-fluid">
+    <form class="form-signin text-center" [formGroup]="loginForm" (submit)="login()">
+        <h1 *ngIf="appInfo.titletext" class="mb-3 font-weight-normal text-center">{{ appInfo.titletext }}</h1>
+        <img *ngIf="appInfo.titlelogo" style="height:150px;margin-bottom: 15px;" [src]="appInfo.titlelogo" alt="">
+        <h1 class="h3 mb-3 font-weight-normal text-center">Please sign in</h1>
+        <label for="inputEmail" class="sr-only">Username</label>
+        <input type="email" id="inputEmail" class="form-control mb-3" placeholder="Username"
+        formControlName="username" autofocus="">
+        <label for="inputPassword" class="sr-only mt-3">Password</label>
+        <input type="password" id="inputPassword" class="form-control mb-3" placeholder="Password" 
+        formControlName="password">
+    
+        <button class="btn btn-lg btn-primary btn-block col-12" type="submit">Sign in</button>
+        <p class="mt-5 mb-3 text-muted text-center">© 2021-2022</p>
+    </form>
+</div>
+<ngx-spinner
+  bdColor="rgba(51,51,51,0.8)"
+  size="medium"
+  color="#fff000"
+  type="ball-scale-multiple"
+>
+  <p style="font-size: 20px; color: white">Loading...</p>
+</ngx-spinner>

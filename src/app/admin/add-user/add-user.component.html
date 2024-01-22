@@ -1,0 +1,56 @@
+<div class="mi-card mb-3">
+    <div class="mi-header success">
+      {{ user ? 'UPDATE' : 'CREATE' }} ADD USER
+    </div>
+    <div class="mi-body">
+      <form [formGroup]="userForm" (submit)="onSubmit()">
+        <div class="row">
+          <div class="col-sm-6">
+            <div class="form-group">
+              <label for="Folder">First Name</label>
+              <input type="text" class="form-control" placeholder="Enter first name" formControlName="first_name">
+              <p class="validation-error" *ngIf="iserror && userForm.get('first_name')?.invalid">First name is
+                required
+              </p>
+            </div>
+          </div>
+          <div class="col-sm-6">
+            <div class="form-group">
+              <label for="Folder">Last Name</label>
+              <input type="text" class="form-control" placeholder="Enter last name" formControlName="last_name">
+              <p class="validation-error" *ngIf="iserror && userForm.get('last_name')?.invalid">Last name is
+                required
+              </p>
+            </div>
+          </div>
+          <div class="col-sm-6">
+            <div class="form-group">
+              <label for="Folder">Phone Number</label>
+              <input type="text" class="form-control" placeholder="Enter phone number" formControlName="phone_number">
+              <p class="validation-error" *ngIf="iserror && userForm.get('phone_number')?.invalid">Phone number is
+                required
+              </p>
+            </div>
+          </div>
+          <div class="col-sm-6">
+            <div class="form-group">
+              <label for="Folder">User Type</label>
+              <select class="form-control" formControlName="user_type">
+                    <option value="">SELECT USER TYPE</option>
+                    <option value="1">CEO</option>
+                    <option value="2">CHIEF OF DEPARTMENT</option>
+                    <option value="3">EMPLOYEE</option>
+              </select>
+              <p class="validation-error" *ngIf="iserror && userForm.get('user_type')?.invalid">User type is
+                required
+              </p>
+            </div>
+          </div>
+          <div class="col-sm-6">
+            <button type="submit" class="butn success">Submit</button>
+          </div>
+        </div>
+      </form>
+    </div>
+  </div>
+  

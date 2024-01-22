@@ -1,0 +1,67 @@
+<div class="mi-body-container">
+    <div class="mi-card mb-3">
+        <div class="mi-header success">
+          ASSIGN USER TO GROUP
+        </div>
+        <div class="mi-body">
+            <button class="btn btn-danger float-right" (click)="openAddUserModal(addUserModal)">ADD USER</button>
+            <label>SELECT GROUP</label>
+            <select class="form-control col-md-3" (change)="selectGroup($event)">
+                <option *ngFor="let item of groups" [value]="item.id">{{ item.name }}</option>
+            </select>
+        </div>
+      </div>
+      
+      
+      <div class="mi-card">
+        <div class="mi-header info">LIST OF ALL USERS</div>
+        <div class="mi-body">
+          <table class="table mi-table table-bordered table-striped">
+            <thead>
+              <tr>
+                <th scope="col">GROUP Name</th>
+                <th scope="col">USER</th>
+                <th>User Role</th>
+                <th>Action</th>
+              </tr>
+            </thead>
+            <tbody>
+                <tr *ngFor="let item of groupusers">
+                    <td>{{ group.name }}</td>
+                    <td>{{ item.first_name + ' ' + item.last_name }}</td>
+                    <td>{{ item.user_type_name }}</td>
+                    <td>
+                        <button (click)="delete(item)" class="btn btn-info">DELETE</button>
+                    </td>
+                </tr>
+            </tbody>
+          </table>
+        </div>
+        <div class="mi-footer"></div>
+      </div>
+    </div>
+    
+    
+    <ng-template #addUserModal let-modal>
+        <div class="modal-header">
+          <h4 class="modal-title" id="modal-basic-title">ADD USER</h4>
+          <button type="button" class="close" aria-label="Close" (click)="modal.dismiss('Cross click')">
+            <span aria-hidden="true">&times;</span>
+          </button>
+        </div>
+        <div class="modal-body">
+          <form>
+            <div class="form-group">
+              <label for="dateOfBirth">SELECT USER</label>
+              <div class="input-group">
+                 <select name="user" class="form-control" [(ngModel)]="user">
+                     <option *ngFor="let item of users" [value]="item.id">{{ item.first_name + ' ' + item.last_name + '(' + item.user_type_name + ')' }}</option> 
+                 </select>
+              </div>
+            </div>
+          </form>
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-outline-dark" (click)="addUserToGroup()">ADD</button>
+        </div>
+      </ng-template>

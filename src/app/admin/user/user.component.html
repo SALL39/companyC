@@ -1,0 +1,41 @@
+  <div class="mi-body-container">
+    <div class="mi-card mb-3">
+        <div class="mi-header success">
+          Manage User
+        </div>
+      </div>
+      <div class="mi-card">
+        <div class="mi-header info">LIST OF ALL USERS</div>
+        <div class="mi-body">
+          <table class="table mi-table table-bordered table-striped">
+            <thead>
+              <tr>
+                <th scope="col">#</th>
+                <th scope="col">First Name</th>
+                <th scope="col">Last Name</th>
+                <th scope="col">Phone Number</th>
+                <th scope="col">User Type</th>
+                <th scope="col">STATUS</th>
+                <th>Action</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr *ngFor="let item of users;let i = index">
+                <th scope="row">{{ i + 1 }}</th>
+                <td>{{ item.first_name }}</td>
+                <td>{{ item.last_name }}</td>
+                <td>{{ item.phone_number }}</td>
+                <td>{{ item.user_type_name }}</td>
+                <td>{{ item.status == 0 ? 'INACTIVE' : 'ACTIVE' }}</td>
+                <td class="mi-action-button">
+                  <button class="butn warning transparent mr-3" (click)="edit(item)">Edit</button>
+                  <button class="butn danger transparent ml-2" (click)="delete(item)">Delete</button>
+                </td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+        <div class="mi-footer"></div>
+      </div>    
+  </div>
+  

@@ -1,0 +1,44 @@
+<div class="mi-body-container">
+        <div class="mi-card mb-3">
+        <div class="mi-header success">
+          <a href="/assets/rapidchatexcel.xlsx" download class="btn btn-success float-right">Download Sample File</a>  
+          Bulk Import User
+        </div>
+      </div>
+      <div class="mi-card">
+        <div class="mi-header info"> Upload Excel File</div>
+        <div class="mi-body">
+            <input type="file" class="form-control" (change)="onFileChange($event)">
+        </div>
+      </div>
+      <div class="mi-card">
+        <div class="mi-header info"> Bulk Import User</div>
+        <div class="mi-body">
+          <table class="table mi-table table-bordered table-striped">
+            <thead>
+              <tr>
+                <th scope="col">#</th>
+                <th scope="col">First Name</th>
+                <th scope="col">Last Name</th>
+                <th scope="col">Phone Number</th>
+                <th scope="col">User Type</th>
+                <th scope="col">Group</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr *ngFor="let item of users;let i = index">
+                <th scope="row">{{ i + 1 }}</th>
+                <td>{{ item.first_name }}</td>
+                <td>{{ item.last_name }}</td>
+                <td>{{ item.phone_number }}</td>
+                <td>{{ item.user_type_name }}</td>
+                <td>{{ item.group_name }}</td>
+              </tr>
+            </tbody>
+          </table>
+          <button *ngIf="users && users.length > 0" (click)="uploadUser()" class="btn btn-info float-right">Upload</button>
+        </div>
+        <div class="mi-footer"></div>
+      </div>    
+  </div>
+  
